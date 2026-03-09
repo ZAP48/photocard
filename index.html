@@ -17,6 +17,9 @@
             --border: 2px solid #000; 
             --shadow: 4px 4px 0px #000; 
             --radius: 16px; 
+            /* Variáveis para degradê customizado */
+            --grad-c1: #ff9a9e;
+            --grad-c2: #fecfef;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; outline: none; }
@@ -61,7 +64,7 @@
             width: 100%;
         }
 
-        /* Painel de Controles */
+        /* Painel de Controles Estilo ZAP48 */
         .controls {
             background: #fff;
             border: var(--border);
@@ -103,21 +106,10 @@
             cursor: pointer;
         }
 
-        select optgroup {
-            font-family: 'Roboto', sans-serif;
-            font-weight: 900;
-            background: #eee;
-        }
+        select optgroup { font-family: 'Roboto', sans-serif; font-weight: 900; background: #eee; }
+        select option { background: #fff; font-weight: normal; }
 
-        select option {
-            background: #fff;
-            font-weight: normal;
-        }
-
-        input[type="text"]:focus, select:focus { 
-            background: #fff; 
-            border-color: var(--primary); 
-        }
+        input[type="text"]:focus, select:focus { background: #fff; border-color: var(--primary); }
 
         input[type="color"] {
             border: var(--border);
@@ -129,13 +121,7 @@
             width: 100%;
         }
 
-        /* Ajuste do checkbox */
-        input[type="checkbox"] {
-            width: auto;
-            height: auto;
-            cursor: pointer;
-            accent-color: var(--primary);
-        }
+        input[type="checkbox"] { width: auto; height: auto; cursor: pointer; accent-color: var(--primary); }
 
         button { 
             background: var(--primary); 
@@ -153,48 +139,23 @@
             font-family: 'Montserrat', sans-serif;
         }
 
-        button:active { 
-            transform: scale(0.98); 
-            box-shadow: 0 0 0 #000; 
-        }
+        button:active { transform: scale(0.98); box-shadow: 0 0 0 #000; }
 
-        .btn-download { 
-            background: var(--black); 
-            color: var(--primary); 
-            margin-top: 10px; 
-            font-size: 1.1rem; 
-            padding: 15px;
-        }
+        .btn-download { background: var(--black); color: var(--primary); margin-top: 10px; font-size: 1.1rem; padding: 15px; }
 
-        .stickers-row {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-        }
+        .stickers-row { display: flex; gap: 10px; justify-content: center; }
 
-        .sticker-btn {
-            background: #fff;
-            font-size: 20px;
-            padding: 5px;
-            border-radius: 8px;
-            box-shadow: 2px 2px 0 #000;
-        }
+        .sticker-btn { background: #fff; font-size: 20px; padding: 5px; border-radius: 8px; box-shadow: 2px 2px 0 #000; }
 
-        hr {
-            border: 0;
-            border-top: 2px dashed #ccc;
-            margin: 5px 0;
-        }
+        hr { border: 0; border-top: 2px dashed #ccc; margin: 5px 0; }
 
-        /* --- ÁREA DO PHOTOCARD --- */
-        .preview-area {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+        /* --- ÁREA DO PHOTOCARD (CORRIGIDA) --- */
+        .preview-area { display: flex; justify-content: center; align-items: center; }
 
+        /* Estilo base do card para formatos de tamanho fixo */
         .photocard {
             width: 320px;
+            height: 480px; /* Padrão fixo para kpop, dark, etc. */
             position: relative;
             overflow: hidden;
             box-shadow: 8px 8px 0px rgba(0,0,0,0.1); 
@@ -202,52 +163,10 @@
             background-color: #ffffff;
         }
 
-        /* Molduras Originais */
-        .frame-polaroid { 
-            height: auto; 
-            border-radius: 4px; 
-            padding: 20px 20px 90px 20px; 
-            border: var(--border); 
-        }
-        .frame-polaroid .photo-container {
-            height: 280px; 
-            border-radius: 2px;
-            border: 1px solid rgba(0,0,0,0.1);
-        }
-
-        .frame-kpop { height: 480px; border-radius: var(--radius); padding: 0; border: 8px solid white; box-shadow: var(--shadow); }
-        .frame-dark { height: 480px; border-radius: var(--radius); padding: 0; border: 8px solid #222; background-color: #222 !important; }
-
-        /* MOLDURAS NOVAS */
-        .frame-pastel { 
-            height: 480px; 
-            border-radius: var(--radius); 
-            padding: 0; 
-            border: 8px solid #ffb7b2; 
-            box-shadow: var(--shadow); 
-            background-color: #e2f0cb; 
-        }
-        
-        .frame-gradient {
-            height: 480px;
-            border-radius: var(--radius);
-            padding: 8px; 
-            background: linear-gradient(45deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
-            box-shadow: var(--shadow);
-        }
-
-        .frame-holographic {
-            height: 480px;
-            border-radius: var(--radius);
-            padding: 8px;
-            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3);
-            background-size: 400% 400%;
-            box-shadow: var(--shadow);
-        }
-
+        /* Container da foto CORRIGIDO para garantir altura em formatos fixos */
         .photo-container {
             width: 100%;
-            height: 100%;
+            height: 100%; /* Padrão para kpop, dark, etc. */
             border-radius: inherit;
             overflow: hidden;
             position: relative;
@@ -259,73 +178,92 @@
             font-weight: bold;
         }
 
-        .photo {
-            width: 100%;
-            height: 100%;
-            position: absolute;
-            top: 0;
-            left: 0;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            transform-origin: center;
+        /* A foto em si CORRIGIDA */
+        .photo { width: 100%; height: 100%; position: absolute; top: 0; left: 0; background-size: cover; background-position: center; background-repeat: no-repeat; transform-origin: center; }
+
+        /* --- FORMATOS CUSTOMIZÁVEIS (POLAROIDS) --- */
+        /* Variáveis de borda só funcionam aqui */
+        .frame-polaroid-square { 
+            --border-size: 20px;
+            --border-bottom: 90px;
+            height: auto !important; /* Se adapta ao padding para ficar quadrado */
+            border-radius: 4px; 
+            padding: var(--border-size) var(--border-size) var(--border-bottom) var(--border-size); 
+            border: var(--border); 
+        }
+        .frame-polaroid-square .photo-container {
+            aspect-ratio: 1 / 1; /* Força área da foto quadrada */
+            height: auto !important; /* Sobrescreve o 100% padrão */
+            border-radius: 2px;
+            border: 1px solid rgba(0,0,0,0.1);
         }
 
-        .frame-overlay-img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            pointer-events: none;
-            z-index: 5;
-            display: none;
+        .frame-polaroid-portrait { 
+            --border-size: 20px;
+            --border-bottom: 90px;
+            /* Altura fixa de 480px funciona aqui, padding empurra conteúdo */
+            border-radius: 4px; 
+            padding: var(--border-size) var(--border-size) var(--border-bottom) var(--border-size); 
+            border: var(--border); 
         }
+        .frame-polaroid-portrait .photo-container {
+            height: 100%; /* Ocupa altura restante dentro do padding */
+            border-radius: 2px;
+            border: 1px solid rgba(0,0,0,0.1);
+        }
+
+        /* --- FORMATOS PADRÃO (FIXOS - BUG CORRIGIDO) --- */
+        .frame-kpop { border-radius: var(--radius); border: 8px solid white; box-shadow: var(--shadow); }
+        .frame-dark { border-radius: var(--radius); border: 8px solid #222; background-color: #222 !important; }
+        .frame-pastel { border-radius: var(--radius); border: 8px solid #ffb7b2; background-color: #e2f0cb; }
+        
+        .frame-gradient { 
+            border-radius: var(--radius); 
+            padding: 8px; /* Funciona como borda transparente */
+            background: linear-gradient(45deg, var(--grad-c1) 0%, var(--grad-c2) 100%); 
+            box-shadow: var(--shadow); 
+        }
+        
+        .frame-holographic { 
+            border-radius: var(--radius); 
+            padding: 8px;
+            background: linear-gradient(124deg, #ff2400, #e81d1d, #e8b71d, #e3e81d, #1de840, #1ddde8, #2b1de8, #dd00f3, #dd00f3); 
+            background-size: 400% 400%; 
+            box-shadow: var(--shadow); 
+        }
+
+        /* Elementos genéricos */
+        .frame-overlay-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-size: cover; background-position: center; background-repeat: no-repeat; pointer-events: none; z-index: 5; display: none; }
 
         /* Elementos Arrastáveis */
-        .draggable {
-            position: absolute;
-            cursor: grab;
-            user-select: none;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 10;
-        }
-
+        .draggable { position: absolute; cursor: grab; user-select: none; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; }
         .draggable:active { cursor: grabbing; }
+
+        .content-span, .content-img { display: inline-block; transition: transform 0.1s ease; }
 
         .ui-controls {
             position: absolute;
-            top: -20px;
-            right: -40px;
+            top: -35px;
+            right: -60px;
             display: flex;
             flex-direction: column;
             gap: 4px;
             opacity: 0;
             transition: 0.2s;
+            background: rgba(255,255,255,0.8);
+            padding: 5px;
+            border-radius: 8px;
+            border: 2px solid #000;
         }
 
         .draggable:hover .ui-controls { opacity: 1; }
+        .ui-row { display: flex; gap: 4px; justify-content: center; }
 
         .btn-action {
-            background: #fff;
-            color: #000;
-            border: 2px solid #000;
-            border-radius: 4px;
-            width: 24px;
-            height: 24px;
-            font-size: 16px;
-            font-weight: 900;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 2px 2px 0 rgba(0,0,0,1);
-            font-family: 'Montserrat', sans-serif;
+            background: #fff; color: #000; border: 2px solid #000; border-radius: 4px;
+            width: 24px; height: 24px; font-size: 14px; font-weight: 900;
+            display: flex; align-items: center; justify-content: center; cursor: pointer;
+            box-shadow: 2px 2px 0 rgba(0,0,0,1); font-family: 'Montserrat', sans-serif;
         }
 
         .btn-action:active { transform: scale(0.9); box-shadow: 0 0 0 rgba(0,0,0,1); }
@@ -356,20 +294,37 @@
             <div class="control-group">
                 <label>🖼️ Formato e Cor do Card</label>
                 <select id="frameSelect" style="margin-bottom: 5px;">
-                    <optgroup label="Originais">
-                        <option value="frame-polaroid">Polaroid Clássica (Quadrada)</option>
+                    <optgroup label="Originais Customizáveis">
+                        <option value="frame-polaroid-square">Polaroid Clássica (Quadrada)</option>
+                        <option value="frame-polaroid-portrait">Polaroid Retrato (Original)</option>
+                    </optgroup>
+                    <optgroup label="Padrão (Tamanho Fixo)">
                         <option value="frame-kpop">K-Pop Album (Retrato Branco)</option>
                         <option value="frame-dark">Dark Mode (Borda Preta)</option>
-                    </optgroup>
-                    <optgroup label="Novas Molduras">
                         <option value="frame-pastel">Kawaii Pastel (Rosa e Verde)</option>
-                        <option value="frame-gradient">Sunset Gradient (Rosa/Laranja)</option>
+                        <option value="frame-gradient">Sunset Gradient (Degradê)</option>
                         <option value="frame-holographic">Holográfica Especial</option>
                     </optgroup>
                 </select>
                 <div style="display: flex; align-items: center; gap: 10px;">
                     <label style="margin:0; font-size: 0.7rem;">Cor Fundo/Borda:</label>
                     <input type="color" id="cardBgColor" value="#ffffff" style="flex: 1; height: 35px;">
+                </div>
+            </div>
+
+            <div class="control-group" id="borderCustomizeGroup" style="display: none; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px dashed #ccc;">
+                <label>📏 Ajuste de Bordas (Polaroid)</label>
+                <label style="font-size: 0.65rem; margin-top: 5px;">Espessura Geral:</label>
+                <input type="range" id="borderSize" min="0" max="40" value="20">
+                <label style="font-size: 0.65rem; margin-top: 5px;">Borda Inferior:</label>
+                <input type="range" id="bottomBorder" min="20" max="180" value="90">
+            </div>
+
+            <div class="control-group" id="gradientCustomizeGroup" style="display: none; background: #f9f9f9; padding: 10px; border-radius: 8px; border: 1px dashed #ccc;">
+                <label>🎨 Cores do Degradê</label>
+                <div style="display: flex; gap: 10px;">
+                    <input type="color" id="gradColor1" value="#ff9a9e">
+                    <input type="color" id="gradColor2" value="#fecfef">
                 </div>
             </div>
 
@@ -383,7 +338,6 @@
             <div class="control-group">
                 <label>✍️ Fonte, Texto e Borda</label>
                 <select id="fontSelect" style="margin-bottom: 5px; font-size: 1rem;">
-                    
                     <optgroup label="✨ Assinatura de Idol (Elegantes)">
                         <option value="'Pacifico'" style="font-family: 'Pacifico'">Pacifico (Casual/Amigável)</option>
                         <option value="'Great Vibes'" style="font-family: 'Great Vibes'">Estilo Autography (Assinatura)</option>
@@ -392,7 +346,6 @@
                         <option value="'Dancing Script'" style="font-family: 'Dancing Script'">Estilo Hello Honey (Suave)</option>
                         <option value="'Rouge Script'" style="font-family: 'Rouge Script'">Rouge Script (Clássica)</option>
                     </optgroup>
-
                     <optgroup label="🖌️ Estilo Pincel / Marker (K-Pop)">
                         <option value="'Caveat Brush'" style="font-family: 'Caveat Brush'">Estilo Brusher (Pincel Forte)</option>
                         <option value="'Permanent Marker'" style="font-family: 'Permanent Marker'">Estilo Playlist (Música/Pop)</option>
@@ -400,14 +353,12 @@
                         <option value="'Rock Salt'" style="font-family: 'Rock Salt'">Estilo Bromello (Brush Moderno)</option>
                         <option value="'Gochi Hand'" style="font-family: 'Gochi Hand'">Estilo Wild Youth (Divertido)</option>
                     </optgroup>
-
                     <optgroup label="🧑‍🏫 Estilo Giz / Quadro">
                         <option value="'Cabin Sketch'" style="font-family: 'Cabin Sketch'">Estilo Eraser (Lousa Clássica)</option>
                         <option value="'Fredericka the Great'" style="font-family: 'Fredericka the Great'">Estilo Chalktastic (Escolar)</option>
                         <option value="'Love Ya Like A Sister'" style="font-family: 'Love Ya Like A Sister'">Estilo KG Second (Desenhada)</option>
                         <option value="'Delicious Handrawn'" style="font-family: 'Delicious Handrawn'">Estilo Chalkboard (Crayon)</option>
                     </optgroup>
-
                     <optgroup label="✍️ Clássicas e Manuscritas">
                         <option value="'Kalam'" style="font-family: 'Kalam'">Kalam (Realista)</option>
                         <option value="'Delius'" style="font-family: 'Delius'">Delius (Quadrinhos)</option>
@@ -418,7 +369,6 @@
                         <option value="'Just Another Hand'" style="font-family: 'Just Another Hand'">Just Another Hand</option>
                         <option value="'Montserrat'" style="font-family: 'Montserrat'">Montserrat (Oficial ZAP48)</option>
                     </optgroup>
-                    
                 </select>
                 
                 <input type="text" id="inputText" placeholder="Escreva algo...">
@@ -449,6 +399,15 @@
             </div>
 
             <div class="control-group">
+                <label>🤩 Emojis Customizados</label>
+                <div style="display: flex; gap: 5px;">
+                    <input type="text" id="customEmojiInput" placeholder="Cole emoji aqui" style="flex: 1; text-align: center; font-size: 1.2rem;">
+                    <button onclick="addCustomEmoji()" style="width: auto; padding: 10px;">ADD</button>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label>💖 Stickers Rápidos</label>
                 <div class="stickers-row">
                     <button class="sticker-btn" onclick="addStickerText('💖')">💖</button>
                     <button class="sticker-btn" onclick="addStickerText('✨')">✨</button>
@@ -462,7 +421,7 @@
         </aside>
 
         <section class="preview-area">
-            <div id="photocard" class="photocard frame-polaroid">
+            <div id="photocard" class="photocard frame-polaroid-square">
                 <div class="photo-container">
                     <span id="placeholder-text">Sua foto aqui</span>
                     <div id="photo" class="photo" style="display: none;"></div>
@@ -479,6 +438,11 @@
         const photocard = document.getElementById('photocard');
         const elementsContainer = document.getElementById('elements-container');
         const photoDiv = document.getElementById('photo');
+
+        // Configuração inicial ao carregar (mostra os controles da polaroid quadrada)
+        window.onload = function() {
+            document.getElementById('borderCustomizeGroup').style.display = 'flex';
+        };
 
         // FOTO E ZOOM
         document.getElementById('upload').addEventListener('change', function(e) {
@@ -497,20 +461,62 @@
             photoDiv.style.transform = `scale(${e.target.value})`;
         });
 
-        // TROCAR MOLDURA E COR DE FUNDO
+        // --- LÓGICA DE TROCA DE MOLDURAS (CORRIGIDA) ---
         document.getElementById('frameSelect').addEventListener('change', function() {
+            // Aplica a classe da moldura
             photocard.className = 'photocard ' + this.value;
+            
+            // Gerencia qual painel de customização aparece
+            const borderControls = document.getElementById('borderCustomizeGroup');
+            const gradientControls = document.getElementById('gradientCustomizeGroup');
+
+            if (this.value.includes('polaroid')) {
+                // É polaroid: mostra controle de bordas, esconde degradê
+                borderControls.style.display = 'flex';
+                gradientControls.style.display = 'none';
+            } else if (this.value === 'frame-gradient') {
+                // É degradê: esconde bordas, mostra controle de degradê
+                borderControls.style.display = 'none';
+                gradientControls.style.display = 'flex';
+            } else {
+                // Outro formato: esconde tudo
+                borderControls.style.display = 'none';
+                gradientControls.style.display = 'none';
+            }
         });
 
+        // Cor de fundo geral
         document.getElementById('cardBgColor').addEventListener('input', function(e) {
             photocard.style.backgroundColor = e.target.value;
-            // Muda a cor da borda do kpop se quiserem combinar
-            if(photocard.classList.contains('frame-kpop') || photocard.classList.contains('frame-pastel')) {
+            // Para molduras de tamanho fixo com borda CSS pura, muda a cor da borda também
+            if(this.value === 'frame-kpop' || this.value === 'frame-pastel') {
                 photocard.style.borderColor = e.target.value;
             }
         });
 
-        // MOLDURA PINTEREST
+        // SLIDERS DE BORDAS CUSTOMIZÁVEIS (Só funcionam nas Polaroids via CSS var)
+        document.getElementById('borderSize').addEventListener('input', function(e) {
+            photocard.style.setProperty('--border-size', e.target.value + 'px');
+        });
+
+        document.getElementById('bottomBorder').addEventListener('input', function(e) {
+            photocard.style.setProperty('--border-bottom', e.target.value + 'px');
+        });
+
+        // --- NOVO: LÓGICA DE CUSTOMIZAÇÃO DO DEGRADÊ ---
+        function updateGradient() {
+            const c1 = document.getElementById('gradColor1').value;
+            const c2 = document.getElementById('gradColor2').value;
+            // Atualiza as variáveis CSS para o degradê aparecer no background da moldura
+            photocard.style.setProperty('--grad-c1', c1);
+            photocard.style.setProperty('--grad-c2', c2);
+        }
+
+        document.getElementById('gradColor1').addEventListener('input', updateGradient);
+        document.getElementById('gradColor2').addEventListener('input', updateGradient);
+
+
+        // MOLDURA PINTEREST (PNG Transparente)
         document.getElementById('uploadFrame').addEventListener('change', function(e) {
             const reader = new FileReader();
             reader.onload = function() {
@@ -544,7 +550,7 @@
             contentSpan.style.color = color;
             contentSpan.style.fontFamily = font;
             
-            // Aplica ou remove a borda baseada na checkbox
+            // Aplica ou remove a borda sólida usando text-shadow múltiplo
             if(!noOutline) {
                 contentSpan.style.textShadow = `
                     -2px -2px 0 ${outlineColor}, 2px -2px 0 ${outlineColor}, 
@@ -565,12 +571,21 @@
             elementsContainer.appendChild(el);
         }
 
+        // Adicionar Emoji Customizado
+        function addCustomEmoji() {
+            const emojiVal = document.getElementById('customEmojiInput').value;
+            if(emojiVal) {
+                addStickerText(emojiVal);
+                document.getElementById('customEmojiInput').value = '';
+            }
+        }
+
         function addStickerImage(src) {
             const el = createDraggableElement(src, true);
             elementsContainer.appendChild(el);
         }
 
-        // DRAG AND DROP E REDIMENSIONAR
+        // --- SISTEMA DE DRAG, RESIZE E ROTATE (Mantido) ---
         function createDraggableElement(content, isImage = false, isEmoji = false) {
             const div = document.createElement('div');
             div.className = 'draggable';
@@ -578,18 +593,24 @@
             
             let contentHtml = '';
             if(isImage) {
-                contentHtml = `<img src="${content}" class="content-img" style="width: 100px; pointer-events: none;">`;
+                contentHtml = `<img src="${content}" class="content-img" data-rotation="0" style="width: 100px; pointer-events: none;">`;
             } else {
                 let defaultSize = isEmoji ? '45px' : '40px'; 
-                contentHtml = `<span class="content-span" style="font-size: ${defaultSize}; white-space: nowrap;">${content}</span>`;
+                contentHtml = `<span class="content-span" data-rotation="0" style="font-size: ${defaultSize}; white-space: nowrap;">${content}</span>`;
             }
 
             div.innerHTML = `
                 ${contentHtml}
                 <div class="ui-controls">
-                    <div class="btn-action delete" onclick="this.closest('.draggable').remove()">X</div>
-                    <div class="btn-action" onclick="resizeEl(this, 1)">+</div>
-                    <div class="btn-action" onclick="resizeEl(this, -1)">-</div>
+                    <div class="ui-row"><div class="btn-action delete" onclick="this.closest('.draggable').remove()">X</div></div>
+                    <div class="ui-row">
+                        <div class="btn-action" onclick="resizeEl(this, 1)">+</div>
+                        <div class="btn-action" onclick="resizeEl(this, -1)">-</div>
+                    </div>
+                    <div class="ui-row">
+                        <div class="btn-action" onclick="rotateEl(this, -1)">↺</div>
+                        <div class="btn-action" onclick="rotateEl(this, 1)">↻</div>
+                    </div>
                 </div>
             `;
             
@@ -612,6 +633,17 @@
                 let newSize = currentSize + (direction * 5);
                 if (newSize > 10) span.style.fontSize = newSize + 'px';
             }
+        }
+
+        function rotateEl(btn, direction) {
+            const draggable = btn.closest('.draggable');
+            const isImage = draggable.dataset.isImage === 'true';
+            const target = isImage ? draggable.querySelector('.content-img') : draggable.querySelector('.content-span');
+            
+            let currentRot = parseInt(target.dataset.rotation || 0);
+            currentRot += direction * 15; 
+            target.dataset.rotation = currentRot;
+            target.style.transform = `rotate(${currentRot}deg)`;
         }
 
         function makeDraggable(element) {
